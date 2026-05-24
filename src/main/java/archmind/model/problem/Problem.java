@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "Questions")
+@Document(collection = "Problems")
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
