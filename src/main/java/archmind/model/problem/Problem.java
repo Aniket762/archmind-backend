@@ -15,6 +15,7 @@ import java.util.List;
 public class Problem {
     @Id
     private String questionId;
+    private String slug;
     private String description;
     private List<TestCase> testCase;
     private List<String> hint;
