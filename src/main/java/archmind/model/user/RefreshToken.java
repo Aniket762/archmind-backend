@@ -1,6 +1,4 @@
 package archmind.model.user;
-
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,19 +8,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Document(collection = "Users")
+@Document(collection = "RefreshToken")
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class RefreshToken {
     @Id
     private String userName;
-    private String email;
-    private String password;
-    private UserRole userRole;
-    private UserStatus userStatus;
-    private boolean isEmailValid;
+    private String token;
+    private LocalDateTime expiresAt;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private LocalDateTime lastloginAt;
+    private Boolean revoked;
 }

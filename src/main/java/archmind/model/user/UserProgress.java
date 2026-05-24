@@ -1,28 +1,27 @@
 package archmind.model.user;
-
-
+import archmind.model.problem.Problem;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Document(collection = "Users")
+@Document(collection = "UserProgress")
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class UserProgress {
     @Id
     private String userName;
-    private String email;
-    private String password;
-    private UserRole userRole;
-    private UserStatus userStatus;
-    private boolean isEmailValid;
+    private Problem problem;
+    private ProgressStatus status;
+    private Double bestScore;
+    private Integer attemptCount;
+    private LocalDateTime lastAttempted;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private LocalDateTime lastloginAt;
 }

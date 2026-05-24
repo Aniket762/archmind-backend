@@ -1,28 +1,30 @@
 package archmind.model.user;
-
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.imageio.ImageTranscoder;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Document(collection = "Users")
+@Document(collection = "UserStats")
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class UserStats {
     @Id
     private String userName;
-    private String email;
-    private String password;
-    private UserRole userRole;
-    private UserStatus userStatus;
-    private boolean isEmailValid;
+    private Integer totalProblemsSolved;
+    private Integer totalSubmissions;
+    private Double averageScore;
+    private Integer easySolved;
+    private Integer mediumSolved;
+    private Integer hardSolved;
+    private Integer currentStreak;
+    private Integer maxStreak;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private LocalDateTime lastloginAt;
 }
