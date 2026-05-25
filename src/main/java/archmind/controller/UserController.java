@@ -23,17 +23,17 @@ public class UserController {
         return userService.getAllUsers();
     }
     @Operation(summary = "Get user by Id")
-    @GetMapping("/{userId")
+    @GetMapping("/{userId}")
     public User getUserById(@PathVariable String userId){
         return userService.getUserById(userId);
     }
     @Operation(summary = "Update user")
-    @PutMapping("/{userId")
+    @PutMapping("/{userId}")
     public User updateUser(@PathVariable String userId,@RequestBody User updateUser){
         return userService.updateUser(userId,updateUser);
     }
     @Operation(summary = "Delete User")
-    @DeleteMapping("/{userId")
+    @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable String userId){
          userService.deleteUser(userId);
     }

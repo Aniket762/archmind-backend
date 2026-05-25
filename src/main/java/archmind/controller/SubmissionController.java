@@ -1,6 +1,6 @@
 package archmind.controller;
 
-import archmind.model.solution.Submission;
+import archmind.model.submission.Submission;
 import archmind.service.SubmissionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -33,7 +33,7 @@ public class SubmissionController {
         return submissionService.getSubmissionById(submissionId);
     }
     @Operation(summary = "Get submissions by user")
-    @GetMapping("/user/{userId")
+    @GetMapping("/user/{userId}")
     public List<Submission> getSubmissionByUser(@PathVariable String userId){
         return submissionService.getSubmissionByUserId(userId);
     }

@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Document(collection = "Problems")
@@ -16,13 +17,14 @@ public class Problem {
     @Id
     private String questionId;
     private String slug;
+    private String title;
     private String description;
     private List<TestCase> testCase;
     private List<String> hint;
     private List<Topic> topics;
     private Level level;
     private String createdBy;
-    private String isPublished;
-    private String createdAt;
-    private String updatedAt;
+    private Boolean isPublished;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

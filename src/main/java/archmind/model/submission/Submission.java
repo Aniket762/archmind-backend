@@ -1,4 +1,4 @@
-package archmind.model.solution;
+package archmind.model.submission;
 
 import archmind.model.problem.Problem;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Submission {
     @Id
+    private String submissionId;
     private String userId;
     private String questionId;
     private Problem problem;

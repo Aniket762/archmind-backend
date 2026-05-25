@@ -1,4 +1,4 @@
-package archmind.model.solution;
+package archmind.model.submission;
 
 public enum Language {
     JAVA,

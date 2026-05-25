@@ -27,10 +27,10 @@ public class ProblemController {
     public List<Problem> getAllProblems(){
         return problemService.getAllProblems();
     }
-    @Operation(summary = "Get all problems by Id")
-    @GetMapping("/{problemId")
-    public List<Problem> getProblemsById(@PathVariable String problemId){
-        return problemService.getProblemsById(problemId);
+    @Operation(summary = "Get problems by Id")
+    @GetMapping("/{problemId}")
+    public Problem getProblemsById(@PathVariable String problemId){
+        return problemService.getProblemById(problemId);
     }
     @Operation(summary = "Create problem")
     @PostMapping
@@ -71,5 +71,4 @@ public class ProblemController {
     ) {
         return problemService.searchProblems(keyword);
     }
-
 }
