@@ -11,28 +11,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = " Auth API", description = "Authentication Operations" )
+@Tag(name = "Auth API", description = "Authentication Operations")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
     private final AuthService authService;
+
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
 
-    @Operation(summary = "Register new user")
-    @PostMapping("/register")
-    public AuthResponse registerUser(
-            @RequestBody RegisterRequest request
-    ) {
-        return authService.registerUser(request);
-    }
     @Operation(summary = "Login user")
     @PostMapping("/login")
-    public AuthResponse loginUser(
-            @RequestBody LoginRequest request
-    ) {
-        return authService.loginUser(request);
+    public AuthResponse login(@RequestBody LoginRequest request) {
+        return authService.login(request);
     }
 
+    @Operation(summary = "Register user")
+    @PostMapping("/register")
+    public AuthResponse register(@RequestBody RegisterRequest request) {
+        return authService.register(request);
+    }
 }

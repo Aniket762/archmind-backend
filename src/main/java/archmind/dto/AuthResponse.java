@@ -1,20 +1,15 @@
 package archmind.dto;
 
+import archmind.model.user.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-
+@AllArgsConstructor
 public class AuthResponse {
     private String token;
-    private String email;
-    private String role;
-    public AuthResponse() {}
-    public AuthResponse(String token, String email, String role) {
-        this.token = token;
-        this.email = email;
-        this.role = role;
-    }
-
+    private String refreshToken;
+    private User user;           // ← frontend needs this to populate profile
 }
