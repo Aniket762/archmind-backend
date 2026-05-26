@@ -23,24 +23,24 @@ public class ProblemController {
     }
 
     @Operation(summary = "Get all problems")
-    @GetMapping
+    @GetMapping("/getAllProblems")
     public List<Problem> getAllProblems(){
         return problemService.getAllProblems();
     }
     @Operation(summary = "Get problems by Id")
-    @GetMapping("/{problemId}")
+    @GetMapping("/getProblemsById/{problemId}")
     public Problem getProblemsById(@PathVariable String problemId){
         return problemService.getProblemById(problemId);
     }
     @Operation(summary = "Create problem")
-    @PostMapping
+    @PostMapping("/createProblem")
     public Problem createProblem(
             @RequestBody Problem problem
     ) {
         return problemService.createProblem(problem);
     }
     @Operation(summary = "Update problem")
-    @PutMapping("/{problemId}")
+    @PutMapping("/updateProblem/{problemId}")
     public Problem updateProblem(
             @PathVariable String problemId,
             @RequestBody Problem updatedProblem
@@ -48,19 +48,19 @@ public class ProblemController {
         return problemService.updateProblem(problemId, updatedProblem);
     }
     @Operation(summary = "Delete problem")
-    @DeleteMapping("/{problemId}")
+    @DeleteMapping("/deleteProblem/{problemId}")
     public void deleteProblem(
             @PathVariable String problemId
     ) {
         problemService.deleteProblem(problemId);
     }
     @Operation(summary = "Get problems by level")
-    @GetMapping("/level/{level}")
+    @GetMapping("/getProblemsByLevel/{level}")
     public List<Problem> getProblemsByLevel(@PathVariable Level level){
         return problemService.getProblemsByLevel(level);
     }
     @Operation(summary = "Get problems by topic")
-    @GetMapping("/topic/{topic}")
+    @GetMapping("/getProblemsByTopic/{topic}")
     public List<Problem> getProblemsByTopic(@PathVariable Topic topic) {
         return problemService.getProblemsByTopic(topic);
     }

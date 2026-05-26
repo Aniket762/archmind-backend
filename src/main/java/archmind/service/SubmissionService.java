@@ -27,8 +27,8 @@ public class SubmissionService {
     public List<Submission> getSubmissionByUserId(String userId) {
         return submissionRepository.findByUserId(userId);
     }
-    public List<Submission> getSubmissionsByProblem(String questionId) {
-        return submissionRepository.findByQuestionId(questionId);
+    public List<Submission> getSubmissionsByProblemId(String problemId) {
+        return submissionRepository.findByProblemId(problemId);
     }
     public void deleteSubmission(String submissionId) {
         Submission submission = submissionRepository.findById(submissionId)

@@ -18,7 +18,7 @@ public class SubmissionController {
     }
 
     @Operation(summary = "Create submission")
-    @PostMapping
+    @PostMapping("/createSubmission")
     public Submission createSubmission(
             @RequestBody Submission submission
     ) {
@@ -26,27 +26,27 @@ public class SubmissionController {
     }
 
     @Operation(summary = "Get submission by ID")
-    @GetMapping("/{submissionId}")
+    @GetMapping("/getSubmissionById/{submissionId}")
     public Submission getSubmissionById(
             @PathVariable String submissionId
     ) {
         return submissionService.getSubmissionById(submissionId);
     }
     @Operation(summary = "Get submissions by user")
-    @GetMapping("/user/{userId}")
-    public List<Submission> getSubmissionByUser(@PathVariable String userId){
+    @GetMapping("/getSubmissionByUserId/{userId}")
+    public List<Submission> getSubmissionByUserId(@PathVariable String userId){
         return submissionService.getSubmissionByUserId(userId);
     }
     @Operation(summary = "Get submissions by problem")
-    @GetMapping("/problem/{problemId}")
+    @GetMapping("/getSubmissionsByProblem/{problemId}")
     public List<Submission> getSubmissionsByProblem(
             @PathVariable String problemId
     ) {
-        return submissionService.getSubmissionsByProblem(problemId);
+        return submissionService.getSubmissionsByProblemId(problemId);
     }
 
     @Operation(summary = "Delete submission")
-    @DeleteMapping("/{submissionId}")
+    @DeleteMapping("/deleteSubmission/{submissionId}")
     public void deleteSubmission(
             @PathVariable String submissionId
     ) {

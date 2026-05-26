@@ -1,7 +1,9 @@
 package archmind.model.problem;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,10 +14,12 @@ import java.util.List;
 @Document(collection = "Problems")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Problem {
     @Id
-    private String questionId;
+    private String problemId;
     private String slug;
     private String title;
     private String description;
