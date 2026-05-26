@@ -2,6 +2,7 @@ package archmind.model.submission;
 
 import archmind.model.problem.Problem;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,12 +13,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Solutions")
+@Document(collection = "Submissions")
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Submission {
     @Id
+
+    @JsonProperty("id")
     private String submissionId;
     private String userId;
     private String problemId;
