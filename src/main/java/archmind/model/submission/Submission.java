@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Submission {
     @Id
-
     @JsonProperty("id")
     private String submissionId;
     private String userId;
