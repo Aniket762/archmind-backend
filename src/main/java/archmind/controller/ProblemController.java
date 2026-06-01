@@ -22,9 +22,25 @@ public class ProblemController {
         this.problemService = problemService;
     }
 
-    @Operation(summary = "Get all problems")
-    @GetMapping("/getAllProblems")
-    public List<Problem> getAllProblems(){
+    @Operation(summary = "Get all problems with optional filters")
+    @GetMapping("getAllProblems")
+    public List<Problem> getAllProblems(
+            @RequestParam(required = false) Level level,
+            @RequestParam(required = false) Topic topic,
+            @RequestParam(required = false) String keyword
+    ) {
+        if (keyword != null && !keyword.isBlank()) {
+            return problemService.searchProblems(keyword);
+        }
+        if (level != null && topic != null) {
+            return problemService.getProblemsByLevelAndTopic(level, topic);
+        }
+        if (level != null) {
+            return problemService.getProblemsByLevel(level);
+        }
+        if (topic != null) {
+            return problemService.getProblemsByTopic(topic);
+        }
         return problemService.getAllProblems();
     }
     @Operation(summary = "Get problems by Id")
@@ -53,16 +69,6 @@ public class ProblemController {
             @PathVariable String problemId
     ) {
         problemService.deleteProblem(problemId);
-    }
-    @Operation(summary = "Get problems by level")
-    @GetMapping("/getProblemsByLevel/{level}")
-    public List<Problem> getProblemsByLevel(@PathVariable Level level){
-        return problemService.getProblemsByLevel(level);
-    }
-    @Operation(summary = "Get problems by topic")
-    @GetMapping("/getProblemsByTopic/{topic}")
-    public List<Problem> getProblemsByTopic(@PathVariable Topic topic) {
-        return problemService.getProblemsByTopic(topic);
     }
     @Operation(summary = "Search problems")
     @GetMapping("/search")

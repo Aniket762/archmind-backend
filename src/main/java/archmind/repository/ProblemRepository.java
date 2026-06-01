@@ -11,6 +11,7 @@ public interface ProblemRepository
         extends MongoRepository<Problem, String> {
     List<Problem> findByLevel(Level level);
     List<Problem> findByTopicsContaining(Topic topic);
+    List<Problem> findByLevelAndTopicsContaining(Level level, Topic topic);
     List<Problem> findByTitleContainingIgnoreCase(String keyword);
     long countByLevel(String level);
 }

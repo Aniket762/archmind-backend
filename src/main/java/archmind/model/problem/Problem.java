@@ -19,7 +19,6 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Problem {
-    @Id
     @JsonProperty("id")
     private String problemId;
     private String slug;

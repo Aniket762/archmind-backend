@@ -2,6 +2,7 @@ package archmind.service;
 
 import archmind.dto.DashboardStatsResponse;
 import archmind.dto.DashboardStatsResponse.*;
+import archmind.model.problem.Level;
 import archmind.model.problem.Problem;
 import archmind.model.submission.Submission;
 import archmind.repository.ProblemRepository;
@@ -167,11 +168,12 @@ public class DashboardService {
                 ))
                 .limit(5)
                 .map(s -> {
-                    String title = problemRepository.findById(s.getProblemId())
+                    Optional<Problem> problem = problemRepository.findById(s.getProblemId());
+                    String title = problem
                             .map(Problem::getTitle)
                             .orElse("Unknown Problem");
-                    String level = problemRepository.findById(s.getProblemId())
-                            .map(Problem::getLevel)
+                    String level = problem
+                            .map(p -> p.getLevel().toString())  // ← convert enum to String
                             .orElse("EASY");
                     return new RecentSubmission(
                             s.getSubmissionId(),
