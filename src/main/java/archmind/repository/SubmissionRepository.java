@@ -9,4 +9,5 @@ public interface SubmissionRepository
         extends MongoRepository<Submission, String> {
     List<Submission> findByUserId(String userId);
     List<Submission> findByProblemId(String problemId);
+    List<Submission> findByUserIdOrderBySubmittedAtDesc(String userId);
 }
