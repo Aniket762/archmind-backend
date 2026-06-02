@@ -27,7 +27,9 @@ public class ProblemController {
     public List<Problem> getAllProblems(
             @RequestParam(required = false) Level level,
             @RequestParam(required = false) Topic topic,
-            @RequestParam(required = false) String keyword
+            @RequestParam(required = false) String keyword,
+            @RequestParam(defaultValue = "0") int offset,
+            @RequestParam(defaultValue = "12") int limit
     ) {
         if (keyword != null && !keyword.isBlank()) {
             return problemService.searchProblems(keyword);
@@ -41,7 +43,12 @@ public class ProblemController {
         if (topic != null) {
             return problemService.getProblemsByTopic(topic);
         }
-        return problemService.getAllProblems();
+        return problemService.getAllProblems(level,
+                topic,
+                keyword,
+                offset,
+                limit
+        );
     }
     @Operation(summary = "Get problems by Id")
     @GetMapping("/getProblemsById/{problemId}")

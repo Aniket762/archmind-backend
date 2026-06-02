@@ -19,8 +19,19 @@ public class ProblemService {
         this.problemRepository = problemRepository;
     }
 
-    public List<Problem> getAllProblems() {
-        return problemRepository.findAll();
+    public List<Problem> getAllProblems(
+            Level level,
+            Topic topic,
+            String keyword,
+            int offset,
+            int limit
+    ) {
+        List<Problem> problems = problemRepository.findAll();
+
+        return problems.stream()
+                .skip(offset)
+                .limit(limit)
+                .toList();
     }
 
     public Problem getProblemById(String problemId) {
