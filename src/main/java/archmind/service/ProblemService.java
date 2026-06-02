@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProblemService {
@@ -77,5 +78,13 @@ public class ProblemService {
 
     public List<Problem> searchProblems(String keyword) {
         return problemRepository.findByTitleContainingIgnoreCase(keyword);
+    }
+    public List<Topic> getAllDistinctTopics() {
+        return problemRepository.findAll()
+                .stream()
+                .flatMap(p -> p.getTopics().stream())
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }

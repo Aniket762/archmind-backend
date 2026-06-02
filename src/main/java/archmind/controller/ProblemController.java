@@ -77,4 +77,9 @@ public class ProblemController {
     ) {
         return problemService.searchProblems(keyword);
     }
+    @Operation(summary = "Get all distinct topics")
+    @GetMapping("getAllTopics")
+    public List<Topic> getAllTopics() {
+        return problemService.getAllDistinctTopics();
+    }
 }

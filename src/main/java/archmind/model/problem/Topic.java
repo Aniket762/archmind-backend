@@ -8,5 +8,12 @@ public enum Topic {
     GATEWAY,
     STORAGE,
     CDN,
-    PROXY
+    PROXY,
+    STORAGE_AND_RETRIEVAL,
+            SOCIAL_MEDIA,
+            INFRASTRUCTURE,
+            REAL_TIME_SYSTEMS,
+            MESSAGING,
+            DISTRIBUTED_SYSTEMS,
+            API_DESIGN
 }
